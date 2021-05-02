@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>顧客情報詳細</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/ClientList">顧客管理DEMO</a>
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+  			<div class="card-header">
+  				<h5 class="card-title">顧客情報詳細</h5>
+  			</div>
+			<div class="card-body">
+		        <div th:object="${Clientlist}">
+		        	<div class="form-group row">
+		        		<label class="col-md-2">顧客名</label>
+						<div class="col-md-10" th:text="*{client_name}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">会社名</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{company_name}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">住所</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{location}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">メールアドレス</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{mail}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">電話番号</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{phone_number}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">資本金</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{capital}"></div>
+		          	</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    <script src="/js/jquery-3.4.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

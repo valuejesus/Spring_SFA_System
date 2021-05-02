@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProductMapper">
+	<select id="findAll" resultType="com.example.demo.domain.Productlist">
+		select * from Productlist
+	</select>
+
+	<select id="findOne" resultType="com.example.demo.domain.Productlist">
+		select * from Productlist where id= #{id}
+	</select>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into Productlist(product_name, category, regular_price,unit,maker,product_specification) values(#{product_name},
+		#{category}, #{regular_price},#{unit},#{maker},#{product_specification})
+	</insert>
+
+	<update id="update">
+		update Productlist set product_name=#{product_name}, category=#{category}, regular_price=#{regular_price},
+		unit=#{unit}, maker=#{maker}, product_specification=#{product_specification} where id= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from Productlist where id = #{id}
+	</delete>
+</mapper>

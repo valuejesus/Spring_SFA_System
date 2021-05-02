@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>新規顧客</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/ClientList">顧客管理DEMO</a>
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+	  			<div class="card-header">
+	  				<h5 class="card-title">新規顧客</h5>
+	  			</div>
+				<div class="card-body">
+	      			<form th:method="post" th:action="@{/ClientList}" th:object="${Clientlist}">
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">顧客名</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="client_name" th:value="*{client_name}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('client_name')}" th:errors="*{client_name}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">会社名</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="company_name" th:value="*{company_name}"/>
+	            				<div class="text-danger" th:if="${#fields.hasErrors('company_name')}" th:errors="*{company_name}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">住所</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="location" th:value="*{location}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">メールアドレス</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="mail" th:value="*{mail}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">電話番号</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="phone_number" th:value="*{phone_number}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">資本金</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="capital" th:value="*{capital}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('capital')}" th:errors="*{capital}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<div class="offset-md-2 col-md-10">
+	            				<button class="btn btn-primary">新規</button>
+	          				</div>
+	        			</div>
+	      		</form>
+	    	</div>
+	  	</div>
+	  </div>
+  	<script src="/js/jquery-3.4.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

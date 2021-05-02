@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>商品情報変更</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/ClientList/productlist">商品管理DEMO</a>
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+  			<div class="card-header">
+  				<h5 class="card-title">商品情報詳細</h5>
+  			</div>
+			<div class="card-body">
+				<form th:action="@{/ClientList/productlist/{id}(id=*{id})}" th:method="put" th:object="${Productlist}">
+				<!--  <div th:object="${Productlist}">-->
+	        		<div class="form-group row">
+	          			<label class="col-md-2 control-label">商品名</label>
+	          			<div class="col-md-10">
+	            			<input class="form-control" type="text" th:field="*{product_name}" />
+	            			<div class="text-danger" th:if="${#fields.hasErrors('product_name')}" th:errors="*{product_name}"></div>
+	          			</div>
+	        		</div>
+	        		<div class="form-group row">
+	          			<label class="col-md-2 control-label">カテゴリー</label>
+	          			<div class="col-md-10">
+	            			<input class="form-control" type="text" th:field="*{category}" />
+	            			<div class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+	          			</div>
+	        		</div>
+	        		<div class="form-group row">
+	          			<label class="col-md-2 control-label">定価</label>
+	          			<div class="col-md-10">
+	            		 <input class="form-control" type="text" th:field="*{regular_price}" />
+	            			<div class="text-danger" th:if="${#fields.hasErrors('regular_price')}" th:errors="*{regular_price}"></div>
+	          			</div>
+	        		</div>
+	        		<div class="form-group row">
+	          			<label class="col-md-2 control-label">単位</label>
+	          			<div class="col-md-10">
+	            			<!-- <input class="form-control" type="text" th:field="*{unit}" /> -->
+	            		<select id="unit" class="form-create-control" name="unit">
+  							<option selected="selected" class="msg">--選択してください--</option>
+  							<option value="個" class="ko">個</option>
+  							<option value="袋" class="hukuro">袋</option>
+  							<option value="箱" class="hako">箱</option>
+						</select>
+	            			<div class="text-danger" th:if="${#fields.hasErrors('unit')}" th:errors="*{unit}"></div>
+	          			</div>
+	        		</div>
+	        		<div class="form-group row">
+	          			<label class="col-md-2 control-label">メーカー</label>
+	          			<div class="col-md-10">
+	            			<input class="form-control" type="text" th:field="*{maker}" />
+	            			<div class="text-danger" th:if="${#fields.hasErrors('maker')}" th:errors="*{maker}"></div>
+	          			</div>
+	        		</div>
+	        		<div class="form-group row">
+	          			<label class="col-md-2 control-label">商品説明</label>
+	          			<div class="col-md-10">
+	            			<input class="form-control" type="text" th:field="*{product_specification}" />
+	            			<div class="text-danger" th:if="${#fields.hasErrors('product_specification')}" th:errors="*{product_specification}"></div>
+	          			</div>
+	        		</div>
+	        		<div class="form-group row">
+	          			<div class="offset-md-2 col-md-9">
+	            			<button class="btn btn-primary">更新</button>
+	            		</div>
+	          		</div>
+	          		<!-- </div> -->
+	          		</form>
+	        	</div>
+
+		</div>
+	</div>
+	<script src="/js/jquery-3.4.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

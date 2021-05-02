@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ClientMapper">
+	<select id="findAll" resultType="com.example.demo.domain.Clientlist">
+		select * from Clientlist
+	</select>
+
+	<select id="findOne" resultType="com.example.demo.domain.Clientlist">
+		select * from Clientlist where id= #{id}
+	</select>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into Clientlist(client_name, company_name, location,mail,phone_number,capital) values(#{client_name},
+		#{company_name}, #{location},#{mail},#{phone_number},#{capital})
+	</insert>
+
+	<update id="update">
+		update Clientlist set client_name=#{client_name}, company_name=#{company_name}, location=#{location},
+		mail=#{mail}, phone_number=#{phone_number}, capital=#{capital} where id= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from Clientlist where id = #{id}
+	</delete>
+</mapper>

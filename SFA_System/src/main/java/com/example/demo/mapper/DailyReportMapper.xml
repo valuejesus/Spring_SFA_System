@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DailyReportMapper">
+	<select id="findAll" resultType="com.example.demo.domain.Dailyreport">
+		select * from Dailyreport
+	</select>
+
+	<select id="findOne" resultType="com.example.demo.domain.Dailyreport">
+		select * from Dailyreport where id= #{id}
+	</select>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into Dailyreport(dateandtime, person_in_charge, activitytime,activitycontent) values(#{dateandtime},
+		#{person_in_charge}, #{activitytime},#{activitycontent})
+	</insert>
+
+	<update id="update">
+		update Dailyreport set dateandtime=#{dateandtime}, person_in_charge=#{person_in_charge}, activitytime=#{activitytime},
+		activitycontent=#{activitycontent} where id= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from Dailyreport where id = #{id}
+	</delete>
+</mapper>

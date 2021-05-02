@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>新規商品</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/ClientList/productlist">商品管理DEMO</a>
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+	  			<div class="card-header">
+	  				<h5 class="card-title">新規商品</h5>
+	  			</div>
+				<div class="card-body">
+	      			<form th:method="post" th:action="@{/ClientList/productlist}" th:object="${Productlist}">
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">商品名</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="product_name" th:value="*{product_name}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('product_name')}" th:errors="*{product_name}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">カテゴリー</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="category" th:value="*{category}"/>
+	            				<div class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">定価</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="regular_price" th:value="*{regular_price}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('regular_price')}" th:errors="*{regular_price}"></div>
+	          				</div>
+	        			</div>
+	        			<!-- <div class="form-group row">
+	          				<label class="col-md-2 control-label">単位</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="unit" th:value="*{unit}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('unit')}" th:errors="*{unit}"></div>
+	          				</div>
+	        			</div> -->
+	        		<!--  	<div class="form-group row">
+	          				<label class="col-md-2 control-label">単位</label>-->
+	          		  		<div class="form-group row">
+						<label class="col-md-2 control-label">単位</label>
+						<div class="col-sm-10">
+	          				<!-- selectタグ その① -->
+						<!--  select class="unitselect" name="unit" th:value="*{unit}">-->
+ 						<select id="unit" class="form-create-control" name="unit">
+ 						 <option selected="selected" class="msg">--選択してください--</option>
+ 						 <option value="個">個</option>
+					 	 <option value="袋">袋</option>
+ 						 <option value="箱">箱</option>
+						</select>
+
+						</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">メーカー</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="maker" th:value="*{maker}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('maker')}" th:errors="*{maker}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">商品説明</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="product_specification" th:value="*{product_specification}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('product_specification')}" th:errors="*{product_specification}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<div class="offset-md-2 col-md-10">
+	            				<button class="btn btn-primary">新規</button>
+	          				</div>
+	        			</div>
+	      		</form>
+	    	</div>
+	  	</div>
+	  </div>
+  	<script src="/js/jquery-3.4.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/original.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script>
+            $(function(){
+                $('.dropdown-menu .dropdown-item').click(function(){
+                    var visibleItem = $('.dropdown-toggle', $(this).closest('.dropdown'));
+                    visibleItem.text($(this).attr('value'));
+                });
+                var selectedValue = $("unit").val();
+            });
+
+        </script>
+</body>
+</html>
